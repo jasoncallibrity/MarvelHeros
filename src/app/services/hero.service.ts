@@ -18,10 +18,10 @@ export class HeroService {
   constructor(private http: HttpClient) {}
 
   public GetHeroList():Observable<Hero[]>{
-    return this.http.get(`${this.charactersEndPoint}?apikey=${this.publicapikey}&limit=${this.limit}`).map(results => {
+    return this.http.get<CharacterData>(`${this.charactersEndPoint}?apikey=${this.publicapikey}&limit=${this.limit}`).map(response => {
       let heroList = [];
       console.log('made it to map')
-      results.data.results.forEach(heroData => {
+      response.data.results.forEach(heroData => {
         heroList.push(new Hero(heroData.name, heroData.description));
       });
       return heroList;
@@ -34,4 +34,8 @@ export class HeroService {
       return [];
     })
   }
+}
+
+export interface CharacterData {
+  data: any;
 }
