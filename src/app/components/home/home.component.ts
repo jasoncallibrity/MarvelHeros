@@ -7,13 +7,11 @@ import { Hero } from '../../models/hero';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
   public heroes:Hero[];
 
-  constructor(private heroService: HeroService) {  
-    
-    
-  }
+  constructor(private heroService: HeroService) {}
 
   ngOnInit() {
     this.heroService.GetHeroList().subscribe(heroes => {
@@ -21,5 +19,4 @@ export class HomeComponent implements OnInit {
       this.heroes = heroes;
     })
   }
-
 }
