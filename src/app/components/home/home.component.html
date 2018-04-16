@@ -1,26 +1,35 @@
-<form>
-    <div class="form-group">
-        <label for="heroNameSearch">
-            Hero Name to Search For
-        </label>
-        <input type="text" class="form-control" id="heroNameSearch" required>
-        <br />
-        <button type="submit" class="btn btn-success">Search</button>
-    </div>
-</form>
 <!-- Homework Section
     homework: get input from user into controller from
     have submit button trigger a function
     bonus: actually get stuff done
 -->
+<p>This is a hero search form</p>
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="heroNameSearch">
 
-<div *ngIf="!heroes">
-    Loading ...
+        </label>
+        <input type="text" class="form-control" id="heroNameSearch" required [(ngModel)]="model.search" name="blah" placeholder="Superhero Name">
+        <br />
+        <br />
+        <button type="submit" class="btn btn-success">Search</button>
+    </div>
+</form>
+
+<div *ngIf="error">
+    {{error}}
+</div>
+
+<div *ngIf="searching">
+    Searching ...
 </div>    
-    <div *ngIf="heroes">
+
+<div *ngIf="hero && !searching">
     <ul>
-        <li *ngFor="let hero of heroes">
-            Hero Name :: {{hero.name}} 
+        <li>
+            Hero Name :: {{hero.name}}
+        </li>
+        <li>
             Hero Description :: {{hero.description}}
         </li>
     </ul>
