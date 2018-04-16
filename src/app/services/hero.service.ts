@@ -20,7 +20,6 @@ export class HeroService {
   public GetHeroList():Observable<Hero[]>{
     return this.http.get<CharacterData>(`${this.charactersEndPoint}?apikey=${this.publicapikey}&limit=${this.limit}`).map(response => {
       let heroList = [];
-      console.log('made it to map')
       response.data.results.forEach(heroData => {
         heroList.push(new Hero(heroData.name, heroData.description));
       });
@@ -32,6 +31,19 @@ export class HeroService {
     }).catch(error => {
       console.log(error);
       return [];
+    })
+  }
+
+  public GetHero(heroName:string):Observable<Hero>{
+    return this.http.get<CharacterData>(`${this.charactersEndPoint}?apikey=${this.publicapikey}&name=${heroName}`).map(response => {
+      console.log(response);      
+      if(!response || !response.data){
+        throw new Error("Marvel API unresponsive. Try again")
+      } else if(response.data.count == 0){
+        return null;
+      } else {
+        return new Hero(response.data.results[0].name, response.data.results[0].description);
+      }
     })
   }
 }
