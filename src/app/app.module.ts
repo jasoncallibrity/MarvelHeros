@@ -22,7 +22,6 @@ import { LoadingAlert } from './styles/loading-alert/loading-alert'
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
     NgbModule.forRoot()
   ],
   providers: [HeroService],
