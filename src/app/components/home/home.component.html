@@ -1,9 +1,7 @@
 <!-- Homework Section
-    homework: get input from user into controller from
-    have submit button trigger a function
-    bonus: actually get stuff done
+    Detail page
 -->
-<p>This is a hero search form</p>
+<p>Marvel Hero Search Form</p>
 <form (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="heroNameSearch">
@@ -21,10 +19,12 @@
 </div>
 
 <div *ngIf="searching">
-    Searching ...
+    <loading-alert></loading-alert>
 </div>    
 
-<div *ngIf="hero && !searching">
+<!-- <hero-detail [heroData]="hero"></hero-detail> -->
+
+<!-- <div *ngIf="hero && !searching">
     <ul>
         <li>
             Hero Name :: {{hero.name}}
@@ -33,4 +33,4 @@
             Hero Description :: {{hero.description}}
         </li>
     </ul>
-</div>
+</div> -->
