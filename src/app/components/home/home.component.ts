@@ -4,15 +4,16 @@ import { Hero } from '../../models/hero';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoadingAlert } from '../../styles/loading-alert/loading-alert'
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  templateUrl: './home.component.html'
 })
 
 @NgModule({
-  imports: [NgbModule]
+  imports: [NgbModule],
+  declarations: [LoadingAlert]
 })
 
 export class HomeComponent implements OnInit {
