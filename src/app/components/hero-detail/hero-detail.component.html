@@ -1,3 +1,10 @@
-<p>
-  hero-detail works!
-</p>
+<div *ngIf="heroData">
+    <ul>
+        <li>
+            Hero Name :: {{heroData.name}}
+        </li>
+        <li>
+            Hero Description :: {{heroData.description}}
+        </li>
+    </ul>
+</div>

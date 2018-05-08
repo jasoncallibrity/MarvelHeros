@@ -17,30 +17,15 @@ export class HeroService {
 
   constructor(private http: HttpClient) {}
 
-  public GetHeroList():Observable<Hero[]>{
-    return this.http.get<CharacterData>(`${this.charactersEndPoint}?apikey=${this.publicapikey}&limit=${this.limit}`).map(response => {
-      let heroList = [];
-      response.data.results.forEach(heroData => {
-        heroList.push(new Hero(heroData.name, heroData.description));
-      });
-      return heroList;
-    }).map(heroes =>{
-      return heroes.filter(hero => {
-        return !!hero.description;
-      })
-    }).catch(error => {
-      console.log(error);
-      return [];
-    })
-  }
-
   public GetHero(heroName:string):Observable<Hero>{
     return this.http.get<CharacterData>(`${this.charactersEndPoint}?apikey=${this.publicapikey}&name=${heroName}`).map(response => {
-      console.log(response);      
+      console.log(response);   
       if(!response || !response.data){
-        throw new Error("Marvel API unresponsive. Try again")
+        throw new Error("Marvel API unresponsive. Try again");
       } else if(response.data.count == 0){
-        return null;
+        throw new Error("What you searched for doesn't exist HUMAN!");
+      } else if(!response.data.results[0].description){
+        throw new Error("This hero doesn't have a description. Choose one that matters!");
       } else {
         return new Hero(response.data.results[0].name, response.data.results[0].description);
       }

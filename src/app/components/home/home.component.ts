@@ -10,36 +10,38 @@ import { Observable } from 'rxjs/Rx';
 })
 
 export class HomeComponent implements OnInit {
-  // public heroes:Hero[];
-  public hero:Hero;
+  public heroes:Hero[] = [];
   public model={search:""};
   public searching:boolean = false;
   public error:string;
   constructor(private heroService: HeroService) {}
 
   ngOnInit() {
-    // this.heroService.GetHeroList().subscribe(heroes => {
-    //   this.heroes = heroes;
-    // })
   }
 
   onSubmit() {
     this.searching = true;
     this.error = null;
-    this.hero = null;
     this.heroService.GetHero(this.model.search)
-      .catch(error => {
-        this.error = error;
-        this.searching = false;
-        return Observable.throw(error);
-      })
-      .subscribe(hero => {      
-        if(!hero){
-          this.error = "What you searched for didn't work human. Try again!"
+      .map((hero:Hero) => {
+        const exists = this.heroes.find((h:Hero) => {
+          return h.name === hero.name;
+        })
+        if(exists){
+          throw new Error("Hero already in list idiot!");
         } else {
-          this.hero = hero;         
+          return hero;
         }
+      })
+      .catch((err:Error) => {
+        this.error = err.message;
+        return Observable.throw(err);
+      })
+      .finally(() => {
         this.searching = false;
-    });    
+      })
+      .subscribe(hero => {
+        this.heroes.unshift(hero);
+    });
   }
 }

@@ -8,14 +8,16 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LoadingAlert } from './styles/loading-alert/loading-alert'
+import { LoadingAlert } from './components/loading-alert/loading-alert';
+import { HeroListComponent } from './components/hero-list/hero-list.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeroDetailComponent,
-    LoadingAlert
+    LoadingAlert,
+    HeroListComponent
   ],
   imports: [
     BrowserModule,
