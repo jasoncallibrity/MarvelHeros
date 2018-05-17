@@ -1,10 +1,6 @@
 <div *ngIf="heroData">
-    <ul>
-        <li>
-            Hero Name :: {{heroData.name}}
-        </li>
-        <li>
-            Hero Description :: {{heroData.description}}
-        </li>
-    </ul>
-</div>
+    <button type="button" class="btn btn-default" (click)="isCollapsed = !isCollapsed">{{heroData.name}}</button>
+    <div [ngbCollapse]="!isCollapsed">
+        <app-hero-pane [heroData]="heroData"></app-hero-pane>
+    </div>
+</div> 

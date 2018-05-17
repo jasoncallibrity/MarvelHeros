@@ -9,7 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingAlert } from './components/loading-alert/loading-alert';
-import { HeroListComponent } from './components/hero-list/hero-list.component'
+import { HeroListComponent } from './components/hero-list/hero-list.component';
+import { HeroPaneComponent } from './components/hero-pane/hero-pane.component'
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HeroListComponent } from './components/hero-list/hero-list.component'
     HomeComponent,
     HeroDetailComponent,
     LoadingAlert,
-    HeroListComponent
+    HeroListComponent,
+    HeroPaneComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { HeroListComponent } from './components/hero-list/hero-list.component'
     NgbModule.forRoot()
   ],
   providers: [HeroService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [HeroPaneComponent]
 })
 export class AppModule { }
