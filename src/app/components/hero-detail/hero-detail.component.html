@@ -1,6 +1,3 @@
 <div *ngIf="heroData">
-    <button type="button" class="btn btn-default" (click)="isCollapsed = !isCollapsed">{{heroData.name}}</button>
-    <div [ngbCollapse]="!isCollapsed">
-        <app-hero-pane [heroData]="heroData"></app-hero-pane>
-    </div>
+    <button type="button" class="btn btn-default" (click)="open()">{{heroData.name}}</button>
 </div> 

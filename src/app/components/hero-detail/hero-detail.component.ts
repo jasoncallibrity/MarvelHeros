@@ -12,12 +12,13 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 export class HeroDetailComponent implements OnInit {
   @Input() heroData: Hero
   
-  private modalRef:NgbModalRef
+  private componentRef:any
 
   constructor(public modalService: NgbModal) { }
 
   open(){
-    this.modalRef = this.modalService.open(HeroPaneComponent);
+    this.componentRef = this.modalService.open(HeroPaneComponent).componentInstance;
+    this.componentRef.heroData = this.heroData;
   }
 
   ngOnInit() {
