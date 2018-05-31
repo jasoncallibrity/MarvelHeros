@@ -27,7 +27,7 @@ export class HeroService {
       } else if(!response.data.results[0].description){
         throw new Error("This hero doesn't have a description. Choose one that matters!");
       } else {
-        return new Hero(response.data.results[0].name, response.data.results[0].description);
+        return new Hero(response.data.results[0].name, response.data.results[0].description, response.data.results[0].thumbnail.path);
       }
     })
   }
