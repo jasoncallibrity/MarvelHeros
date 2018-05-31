@@ -4,18 +4,16 @@ export class Hero {
     name: string
     description: string
     pictureURL: string
+    pictureExtension: string
 
-    constructor(name: string, description?: string, pictureURL?: string) {
+    constructor(name: string, description?: string, pictureURL?: string, pictureExtension?: string) {
         this.name = name;
         this.description = description;
         this.pictureURL = pictureURL;
+        this.pictureExtension = pictureExtension;
     }
 
     public getPictureURL(iv: ImageVariant) {
-        return `${this.pictureURL}/${iv}.jpg`
+        return `${this.pictureURL}${iv.length?'/'+iv:''}.${this.pictureExtension}`
     }
 }
-
-
-
-///``getPictureUrl(ImageVariant.PORTRAIT_SMALL)

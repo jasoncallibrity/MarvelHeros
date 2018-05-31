@@ -18,9 +18,10 @@
                 {{error}}
             </div>
             
-            <loading-alert *ngIf="searching"></loading-alert>  
+            <loading-alert *ngIf="searching"></loading-alert>
+            
+            <app-hero-list [heroList]="heroes"></app-hero-list>
         </div>
     </div>
 </div>
 
-<app-hero-list [heroList]="heroes"></app-hero-list>
