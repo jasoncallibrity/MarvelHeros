@@ -15,19 +15,19 @@ export class HeroService {
   private limit = 100;
   private heroList: Hero[];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  public GetHero(heroName:string):Observable<Hero>{
+  public GetHero(heroName: string): Observable<Hero> {
     return this.http.get<CharacterData>(`${this.charactersEndPoint}?apikey=${this.publicapikey}&name=${heroName}`).map(response => {
-      console.log(response);   
-      if(!response || !response.data){
+      console.log(response);
+      if (!response || !response.data) {
         throw new Error("Marvel API unresponsive. Try again");
-      } else if(response.data.count == 0){
+      } else if (response.data.count == 0) {
         throw new Error("What you searched for doesn't exist HUMAN!");
-      } else if(!response.data.results[0].description){
+      } else if (!response.data.results[0].description) {
         throw new Error("This hero doesn't have a description. Choose one that matters!");
       } else {
-        return new Hero(response.data.results[0].name, response.data.results[0].description);
+        return new Hero(response.data.results[0].name, response.data.results[0].description, response.data.results[0].thumbnail.path, response.data.results[0].thumbnail.extension);
       }
     })
   }

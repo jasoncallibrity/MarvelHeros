@@ -10,7 +10,7 @@ import { HeroDetailComponent } from './components/hero-detail/hero-detail.compon
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingAlert } from './components/loading-alert/loading-alert';
 import { HeroListComponent } from './components/hero-list/hero-list.component';
-import { HeroPaneComponent } from './components/hero-pane/hero-pane.component'
+import { HeroPaneComponent } from './components/hero-pane/hero-pane.component';
 
 @NgModule({
   declarations: [

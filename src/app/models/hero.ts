@@ -1,12 +1,19 @@
-export class Hero{
+import { ImageVariant } from './image-variant.enum'
+
+export class Hero {
     name: string
     description: string
-    //map whatever properties are returned to whatever they need to be mapped to
-    //name
-    //description (display 'no discription if response is empty)
-    // cast api response to object [json, typescript]
-    constructor(name: string, description?: string){
+    pictureURL: string
+    pictureExtension: string
+
+    constructor(name: string, description?: string, pictureURL?: string, pictureExtension?: string) {
         this.name = name;
         this.description = description;
+        this.pictureURL = pictureURL;
+        this.pictureExtension = pictureExtension;
+    }
+
+    public getPictureURL(iv: ImageVariant) {
+        return `${this.pictureURL}${iv.length?'/'+iv:''}.${this.pictureExtension}`
     }
 }
