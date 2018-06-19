@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
       <div class="col-6">
-          <p>Marvel Hero Search Form</p>
+          <p align="center">Marvel Hero Search Form</p>
           <form (ngSubmit)="onSubmit()">
               <div class="form-group">
                   <input type="text" class="form-control" autocomplete="off" id="heroNameSearch" required [(ngModel)]="model.search" name="blah" placeholder="Superhero Name">
@@ -14,10 +14,9 @@
           <div *ngIf="error" class="alert alert-warning">
               {{error}}
           </div>
-          
-            
 
           <app-hero-list [heroList]="heroes"></app-hero-list>
+
       </div>
       
   </div>
