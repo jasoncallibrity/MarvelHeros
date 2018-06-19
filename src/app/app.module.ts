@@ -11,6 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingAlert } from './components/loading-alert/loading-alert';
 import { HeroListComponent } from './components/hero-list/hero-list.component';
 import { HeroPaneComponent } from './components/hero-pane/hero-pane.component';
+import { SearchComponent } from './components/search/search.component';
+import { GameComponent } from './components/game/game.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HeroPaneComponent } from './components/hero-pane/hero-pane.component';
     HeroDetailComponent,
     LoadingAlert,
     HeroListComponent,
-    HeroPaneComponent
+    HeroPaneComponent,
+    SearchComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
