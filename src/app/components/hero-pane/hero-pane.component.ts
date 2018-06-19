@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Hero } from '../../models/hero';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
+import { ImageVariant } from '../../models/image-variant.enum';
 
 @Component({
   selector: 'app-hero-pane',
@@ -8,13 +9,14 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
   styleUrls: ['./hero-pane.component.css']
 })
 export class HeroPaneComponent implements OnInit {
+  public imageVariant = ImageVariant;
 
   @Input() heroData: Hero
 
-  constructor(public activeModal:NgbActiveModal) {
+  constructor(public activeModal: NgbActiveModal) {
   }
 
-  close(){
+  close() {
     this.activeModal.close();
   }
 
