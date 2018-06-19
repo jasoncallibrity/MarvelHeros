@@ -4,13 +4,10 @@
           <p>Marvel Hero Search Form</p>
           <form (ngSubmit)="onSubmit()">
               <div class="form-group">
-                  <label for="heroNameSearch">
-          
-                  </label>
                   <input type="text" class="form-control" autocomplete="off" id="heroNameSearch" required [(ngModel)]="model.search" name="blah" placeholder="Superhero Name">
                   <br />
+                  <button type="submit" class="btn btn-info btn-block">{{ !searching ? "Search" : "Searching..."}}</button>
                   <br />
-                  <button type="submit" class="btn btn-success">Search</button>
               </div>
           </form>
           
@@ -18,9 +15,11 @@
               {{error}}
           </div>
           
-          <loading-alert *ngIf="searching"></loading-alert>  
+            
+
+          <app-hero-list [heroList]="heroes"></app-hero-list>
       </div>
+      
   </div>
 </div>
 
-<app-hero-list [heroList]="heroes"></app-hero-list>
